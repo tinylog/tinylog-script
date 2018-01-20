@@ -24,11 +24,11 @@ class Performance {
     // 内容加载完成的时间
     times.request = t.responseEnd - t.requestStart
     // 执行 onload 回调函数的时间
-    times.loadEvent = t.loadEventEnd - t.loadEventStart;
+    times.loadEvent = t.loadEventEnd - t.loadEventStart
     // DNS 缓存时间
     times.appcache = t.domainLookupStart - t.fetchStart
     // TCP 建立连接完成握手的时间
-    times.connect = t.connectEnd - t.connectStart;
+    times.connect = t.connectEnd - t.connectStart
     this.times = times
     return this.times
   }
@@ -43,24 +43,35 @@ class Performance {
 
   // 获取资源对应的时间信息
   getEntryTiming (entry) {
-    const t = entry;
-    const times = {};
+    const t = entry
+    const times = {}
     // 重定向的时间
-    times.redirect = t.redirectEnd - t.redirectStart;
+    times.redirect = t.redirectEnd - t.redirectStart
     // DNS 查询时间
-    times.lookupDomain = t.domainLookupEnd - t.domainLookupStart;
+    times.lookupDomain = t.domainLookupEnd - t.domainLookupStart
     // 内容加载完成的时间
-    times.request = t.responseEnd - t.requestStart;
+    times.request = t.responseEnd - t.requestStart
     // TCP 建立连接完成握手的时间
-    times.connect = t.connectEnd - t.connectStart;
+    times.connect = t.connectEnd - t.connectStart
     // 挂载 entry 返回
-    times.name = entry.name;
+    times.name = entry.name
     // 请求类型
-    times.entryType = entry.entryType;
+    times.entryType = entry.entryType
     // 详细资源
-    times.initiatorType = entry.initiatorType;
+    times.initiatorType = entry.initiatorType
     // 请求资源耗时
-    times.duration = entry.duration;
-    return times;
+    times.duration = entry.duration
+    return times
+  }
+
+  start () {
+    this.getPerformanceTime()
+    this.getEntries()
+    return {
+      times: this.times,
+      entries: this.entries
+    }
   }
 }
+
+export default new Performance()

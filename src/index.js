@@ -1,3 +1,3 @@
-console.log('start')
+import performance from './lib/performance'
 
-console.log(performance.timing)
+console.log(performance.start())
