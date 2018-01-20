@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name"        : "static-template",
+            "script"      : "index.js",
+            "instances"   : 1,
+            "watch"       : false,
+            "exec_interpreter" : "node",
+            "exec_mode"        : "fork"
+        }
+    ]
+  }
