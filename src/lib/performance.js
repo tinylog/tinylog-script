@@ -40,7 +40,7 @@ class Performance {
     times.loadEvent = t.loadEventEnd - t.loadEventStart
     // DNS 缓存时间
     times.appcache = t.domainLookupStart - t.fetchStart
-    // TCP 建立连接完成握手的时间
+    // TCP 建立连接完成握手的时间34
     times.connect = t.connectEnd - t.connectStart
     this.times = times
     return this.times
