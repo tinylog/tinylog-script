@@ -1,7 +1,20 @@
 class Performance {
   constructor () {
     this.timing = window.performance.timing
+    /**
+     * navigation.type
+     * 0   : TYPE_NAVIGATENEXT 正常进入的页面（非刷新、非重定向等）
+     * 1   : TYPE_RELOAD       通过 window.location.reload() 刷新的页面
+     * 2   : TYPE_BACK_FORWARD 通过浏览器的前进后退按钮进入的页面（历史记录）
+     * 255 : TYPE_UNDEFINED    非以上方式进入的页面
+     */
     this.navigation = window.performance.navigation
+    /**
+     * memory
+     * usedJSHeapSize : JS 对象（包括V8引擎内部对象）占用的内存，一定小于 totalJSHeapSize
+     * totalJSHeapSize: 可使用的内存
+     * jsHeapSizeLimit: 内存大小限制
+     */
     this.memory = window.performance.memory || {}
     this.times = {}
     this.entries = []
@@ -74,4 +87,4 @@ class Performance {
   }
 }
 
-export default new Performance()
+export default new Performance().start()
