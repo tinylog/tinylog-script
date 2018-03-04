@@ -2,6 +2,6 @@ import performance from './lib/performance'
 import { initEvents } from './lib/events'
 
 console.log(performance)
-initEvents()
+// initEvents()
 
-throw new Error('测试')
+// throw new Error('测试')
