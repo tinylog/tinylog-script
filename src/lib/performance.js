@@ -1,3 +1,5 @@
+import { getOs, getBrowserVersion } from './utils'
+
 class Performance {
   constructor () {
     this.timing = window.performance.timing
@@ -18,7 +20,36 @@ class Performance {
     this.memory = window.performance.memory || {}
     this.times = {}
     this.entries = []
+    this.common = {
+      ua: window.navigator.userAgent,
+      lang: navigator.language|| navigator.userLanguage
+    },
+    this.os = {}
+    this.browser = {}
   }
+
+  /**
+   * @method 获取操作系统类型已经版本
+   */
+  getOs () {
+    let { system } = getOs(this.common.ua)
+    for (let key in system) {
+      if (system[key] !== false) {
+        this.os = {
+          type: key,
+          version: system[key].toString() === 'true' ?  '' :  system[key]
+        }
+      }
+    }
+  }
+
+  /**
+   * @method 获取浏览器版本类型
+   */
+  getBrowserVersion () {
+    this.browser = getBrowserVersion(this.common.ua)
+  }
+
   // 获取页面加载性能指数
   getPerformanceTime () {
     const t = this.timing
@@ -80,9 +111,15 @@ class Performance {
   start () {
     this.getPerformanceTime()
     this.getEntries()
+    this.getOs()
+    this.getBrowserVersion()
     return {
       times: this.times,
-      entries: this.entries
+      entries: this.entries,
+      memory: this.memory,
+      common: this.common,
+      os: this.os,
+      browser: this.browser
     }
   }
 }
