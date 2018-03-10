@@ -26,7 +26,7 @@ class Performance {
     // 页面加载开始到完成时间
     times.loadPage = t.loadEventEnd - t.loadEventStart
     // 解析dom树的时间
-    times.domReady = t.domComplete - t.responseEnd
+    times.domReady = (t.domComplete  - t.responseEnd) < 0 ? 0 : (t.domComplete - t.responseEnd)
     // 重定向时间
     times.redirect = t.redirectEnd - t.redirectStart
     // DNS 查询时间

@@ -1,8 +1,8 @@
-import request from './request'
+import rest from './request'
 
 export const initEvents = () => {
   window.addEventListener('beforeunload', () => {
-    return request.request({
+    return rest.request({
       url: '/test'
     }).then(() => {
       console.log('test')
