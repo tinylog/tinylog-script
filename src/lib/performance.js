@@ -108,7 +108,7 @@ class Performance {
     return times
   }
 
-  start () {
+  start (config) {
     this.getPerformanceTime()
     this.getEntries()
     this.getOs()
@@ -124,4 +124,4 @@ class Performance {
   }
 }
 
-export default new Performance().start()
+export default Performance;

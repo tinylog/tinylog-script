@@ -1,12 +1,10 @@
-import performance from './lib/performance'
+import TinyLog from './tinylog'
 import { initEvents } from './lib/events'
-
-// console.log(performance)
-// initEvents()
 
 // throw new Error('测试')
 (function (window) {
-  window.onload = e => {
-    console.log(performance)
-  }
+  initEvents(window)
+  window.TinyLog = TinyLog
 })(window)
+
+console.log(window.TinyLog({}))

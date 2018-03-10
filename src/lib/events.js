@@ -1,11 +1,11 @@
 import rest from './request'
 
-export const initEvents = () => {
+export const initEvents = (window) => {
   // 窗口关闭发送数据事件
   if (window.onbeforeunload) {
     window.onbeforeunload = () => {
       return rest.request({
-        url: '/test'
+        url: 'http://localhost:3000/test'
       }).then(() => {
         console.log('test')
       })
@@ -13,7 +13,7 @@ export const initEvents = () => {
   } else {
     window.addEventListener('beforeunload', () => {
       return rest.request({
-        url: '/test'
+        url: 'http://localhost:3000/test'
       }).then(() => {
         console.log('test')
       })
