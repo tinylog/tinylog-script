@@ -1,10 +1,9 @@
-import TinyLog from './tinylog'
+import { tinyLog } from './tinylog'
 import { initEvents } from './lib/events'
 
-// throw new Error('测试')
-(function (window) {
-  initEvents(window)
-  window.TinyLog = TinyLog
-})(window)
+(function (window, document) {
+  initEvents(window, document)
+  window.tinyLog = tinyLog
+})(window, document)
 
-console.log(window.TinyLog({}))
+console.log(window.tinyLog({}))
