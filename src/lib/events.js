@@ -1,6 +1,6 @@
 import rest from './request'
 
-export const initEvents = (window, document) => {
+export const initEvents = () => {
   // 窗口关闭发送数据事件
   window.addEventListener('beforeunload', (e) => {
     console.log('beforeunload', e)

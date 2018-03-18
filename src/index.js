@@ -1,9 +1,10 @@
 import { tinyLog } from './tinylog'
 import { initEvents } from './lib/events'
 
-(function (window, document) {
-  initEvents(window, document)
+(function () {
   window.tinyLog = tinyLog
-})(window, document)
+})()
 
-console.log(window.tinyLog({}))
+console.log(window.tinyLog({
+  baseURL: 'https://tinylog.ruiming.me'
+}))
