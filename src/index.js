@@ -6,5 +6,6 @@ import { initEvents } from './lib/events'
 })()
 
 console.log(window.tinyLog({
-  baseURL: 'https://tinylog.ruiming.me'
+  // baseURL: 'https://tinylog.ruiming.me'
+  baseURL: 'http://localhost:3000'
 }))

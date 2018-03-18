@@ -48,6 +48,7 @@ class TinyLog {
    */
   async initialize() {
     this.initAxios(this.config)
+    /*
     const { common, os, times, entries } = this.getPerformance()
     let token = this.store.getToken()
     let pageId = this.store.getPageId()
@@ -66,7 +67,7 @@ class TinyLog {
       pageId = pageRes.pageId
       this.store.setPageId(pageId)
       const { data: assetsRes } = await this.reportAssets(token, pageId, entries)
-    }
+    }*/
     this.initEvents()
   }
 
@@ -126,11 +127,15 @@ class TinyLog {
    * @method 退出上报
    */
   async reportExit () {
+    /*
     return reportExitApi({
       token: this.store.getToken(),
       pageId: this.store.getPageId(),
-      exitTime: new Date.now().toISOString()
-    })
+      exitTime: new Date().toISOString()
+    })*/
+    const xmlHttp = new XMLHttpRequest()
+    xmlHttp.open('GET', '/log/exit', false)
+    xmlHttp.send()
   }
 }
 
