@@ -48,7 +48,6 @@ class TinyLog {
    */
   async initialize() {
     this.initAxios(this.config)
-    /*
     const { common, os, times, entries } = this.getPerformance()
     let token = this.store.getToken()
     let pageId = this.store.getPageId()
@@ -57,7 +56,8 @@ class TinyLog {
         referrer: document.referrer,
         lang: common.lang,
         ua: common.ua,
-        os: os.type
+        os: os.type,
+        host: this.config.host
       })
       token = data.token
       this.store.setToken(token)
@@ -67,7 +67,7 @@ class TinyLog {
       pageId = pageRes.pageId
       this.store.setPageId(pageId)
       const { data: assetsRes } = await this.reportAssets(token, pageId, entries)
-    }*/
+    }
     this.initEvents()
   }
 

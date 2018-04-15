@@ -1,6 +1,6 @@
 export const LogInterfaces = {
-  Initialize: '/log/initialize',
-  Page: '/log/page',
-  Assets: '/log/assets',
-  Exit: '/log/exit'
+  Initialize: '/api/log/initialize',
+  Page: '/api/log/page',
+  Assets: '/api/log/assets',
+  Exit: '/api/log/exit'
 }

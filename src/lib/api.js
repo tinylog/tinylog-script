@@ -1,15 +1,16 @@
 import rest from './request'
 import { LogInterfaces } from './url-instances'
+import Fingerprint from 'fingerprintjs'
 
 /**
  * @method 初次连接需要进行该请求，服务端会进行 Cookie 处理，前端无需关心返回值
  */
-export const initializeApi = async ({ referrer, lang, ua, os }) => {
+export const initializeApi = async ({ referrer, lang, ua, os, host }) => {
   return rest.request({
     method: 'post',
     url: LogInterfaces.Initialize,
     data: {
-      referrer, lang, ua, os, host: 'https://www.qq.com'
+      referrer, lang, ua, os, host, createdAt: new Date().toISOString(), fingerprint: new Fingerprint({canvas: true}).get().toString()
     }
   })
 }
@@ -26,7 +27,8 @@ export const reportPageApi = ({ token, url, startTime, prePageId, referrer, load
     method: 'post',
     url: LogInterfaces.Page,
     data: {
-      url, 
+      createdAt: new Date().toISOString(),
+      url,
       startTime, 
       prePageId, 
       referrer, 
