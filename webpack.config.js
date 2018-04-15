@@ -3,13 +3,14 @@ var SpritesmithPlugin = require('webpack-spritesmith')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var webpack = require('webpack')
 var HtmlPlugin = require('html-webpack-plugin');
+var uglify = require('uglifyjs-webpack-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: resolve('/src/index.js'),
   output: {
     path: resolve('/public'),
@@ -87,7 +88,8 @@ module.exports = {
     new HtmlPlugin({
       title: 'Gy-Cli',
 	    filename: resolve('/public/index.html')
-	  }),
+    }),
+    new uglify()
   ],
   devServer: {
     contentBase: './public',
