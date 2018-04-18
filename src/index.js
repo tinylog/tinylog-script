@@ -5,7 +5,8 @@ import { initEvents } from './lib/events'
   window.tinyLog = tinyLog
 })()
 
-// console.log(window.tinyLog({
-//   baseURL: 'https://tinylog.ruiming.me',
-//   host: 'www.qq.com'
-// }))
+window.tinyLog({
+  baseURL: 'https://tinylog.ruiming.me',
+  host: 'www.qq.com',
+  appKey: 'EDOB3132k3DCLKO343ED'
+})

@@ -22,10 +22,10 @@ class TinyLog {
    * @method 事件注册
    */
   initEvents() {
-    // 窗口关闭发送数据事件
-    window.addEventListener('beforeunload', (e) => {
+    this.reportExit();
+    setInterval(() => {
       this.reportExit()
-    })
+    }, 10000);
 
     // 异常捕获上报事件
     window.addEventListener('error', (e) => {
@@ -34,7 +34,8 @@ class TinyLog {
 
     // 路由变化监听事件
     window.addEventListener('popstate', (e) => {
-      console.log('popstate', e)
+      this.reportAssets()
+      this.reportPage()
     })
 
     // 哈希路由变化监听事件
@@ -127,15 +128,10 @@ class TinyLog {
    * @method 退出上报
    */
   async reportExit () {
-    /*
     return reportExitApi({
       token: this.store.getToken(),
-      pageId: this.store.getPageId(),
-      exitTime: new Date().toISOString()
-    })*/
-    const xmlHttp = new XMLHttpRequest()
-    xmlHttp.open('GET', '/log/exit', false)
-    xmlHttp.send()
+      pageId: this.store.getPageId()
+    })
   }
 }
 

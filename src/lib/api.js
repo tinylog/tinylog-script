@@ -63,15 +63,12 @@ export const reportAssetsApi = ({ token, pageId, assets }) => {
 /**
  * @method 网页退出，把当前哪个页面发送过来，以及退出时间
  */
-export const reportExitApi = ({ token, pageId, exitTime }) => {
+export const reportExitApi = ({ token, pageId }) => {
   return rest.request({
     headers: {
       authorization: token
     },
-    method: 'post',
-    url: LogInterfaces.Exit,
-    data: {
-      pageId, exitTime
-    }
+    method: 'get',
+    url: LogInterfaces.Exit + pageId
   })
 }
